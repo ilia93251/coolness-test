@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Very Important Research 💖</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: "Segoe UI", sans-serif;
+    }
+
+    body{
+        min-height:100vh;
+        background: linear-gradient(135deg,#ffd6e7,#ffeef5,#fff);
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        padding:20px;
+    }
+
+    .card{
+        background:white;
+        width:100%;
+        max-width:550px;
+        padding:35px;
+        border-radius:25px;
+        box-shadow:0 10px 30px rgba(255,105,180,0.2);
+        text-align:center;
+    }
+
+    h1{
+        color:#ff4f8b;
+        margin-bottom:15px;
+    }
+
+    h2{
+        color:#ff4f8b;
+        margin-bottom:20px;
+    }
+
+    p{
+        color:#555;
+        margin-bottom:20px;
+    }
+
+    button{
+        background:#ff4f8b;
+        color:white;
+        border:none;
+        padding:12px 22px;
+        border-radius:12px;
+        cursor:pointer;
+        font-size:16px;
+        transition:.2s;
+    }
+
+    button:hover{
+        transform:scale(1.05);
+    }
+
+    input, select{
+        width:100%;
+        padding:12px;
+        margin-top:15px;
+        border-radius:10px;
+        border:1px solid #ddd;
+    }
+
+    .hidden{
+        display:none;
+    }
+
+    .result{
+        animation: pop .8s ease;
+    }
+
+    @keyframes pop{
+        from{
+            opacity:0;
+            transform:scale(.8);
+        }
+        to{
+            opacity:1;
+            transform:scale(1);
+        }
+    }
+
+    .heart{
+        font-size:40px;
+        animation: float 2s infinite;
+    }
+
+    @keyframes float{
+        0%,100%{
+            transform:translateY(0);
+        }
+        50%{
+            transform:translateY(-10px);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div id="start">
+        <h1>💖 Official Coolness Test 💖</h1>
+        <p>
+            Scientists have spent years developing this highly
+            advanced questionnaire.
+        </p>
+        <button onclick="nextQuestion()">Begin Research</button>
+    </div>
+
+    <div id="quiz" class="hidden">
+        <h2 id="question"></h2>
+        <input id="answer" placeholder="Type your answer here">
+        <br><br>
+        <button onclick="nextQuestion()">Next</button>
+    </div>
+
+    <div id="loading" class="hidden">
+        <h2>🔬 Analyzing Results...</h2>
+        <p>Checking coolness levels...</p>
+        <p>Comparing with 8 billion humans...</p>
+        <p>Consulting professional experts...</p>
+    </div>
+
+    <div id="result" class="hidden result">
+        <div class="heart">💖</div>
+
+        <h1>Results Are In!</h1>
+
+        <p>
+            After extensive scientific analysis,
+            several calculations,
+            and absolutely unbiased research...
+        </p>
+
+        <h2>
+            🏆 You are officially the coolest and prettiest girl in the world. 🏆
+        </h2>
+
+        <p>
+            No further testing is required.
+            The results were not even close.
+        </p>
+
+        <p>
+            Final Ranking: #1 ✨
+        </p>
+
+        <p>
+            Error 404: Could not find anyone prettier.
+        </p>
+
+        <div class="heart">🌸</div>
+    </div>
+
+</div>
+
+<script>
+const questions = [
+    "What's your favorite color? 🎨",
+    "Cats or dogs? 🐱🐶",
+    "What's your dream vacation? ✈️",
+    "How awesome are you from 1-10? 😎"
+];
+
+let current = -1;
+
+function nextQuestion(){
+
+    if(current === -1){
+        document.getElementById("start").classList.add("hidden");
+        document.getElementById("quiz").classList.remove("hidden");
+    }
+
+    current++;
+
+    if(current < questions.length){
+        document.getElementById("question").textContent = questions[current];
+        document.getElementById("answer").value = "";
+        return;
+    }
+
+    document.getElementById("quiz").classList.add("hidden");
+    document.getElementById("loading").classList.remove("hidden");
+
+    setTimeout(() => {
+        document.getElementById("loading").classList.add("hidden");
+        document.getElementById("result").classList.remove("hidden");
+    }, 3500);
+}
+</script>
+
+</body>
+</html>
